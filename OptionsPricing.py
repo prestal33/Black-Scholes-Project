@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
 
 
 #pip install pandas_datareader
 
 
-# In[2]:
-
+#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 
 
 from math import log, sqrt, pi, exp
 from scipy.stats import norm
@@ -25,14 +23,6 @@ import pandas_datareader.data as web
 # * Expiration Date: expiry  
 #   
 # The rest can be calculated automatically
-
-# In[40]:
-
-
-
-
-
-# In[101]:
 
 
 def calculate_inputs(stock,expiry,strike_price):
@@ -68,13 +58,7 @@ def calculate_inputs(stock,expiry,strike_price):
         #this breaks on weekends because there is no data to pull on weekends
         r = (web.DataReader(
             "^TNX", 'yahoo', today.replace(day=today.day-1), today)['Close'].iloc[-1])/100
-    except KeyError:
-        r = (web.DataReader(
-            "^TNX", 'yahoo', today.replace(day=today.day-2), today)['Close'].iloc[-1])/100
-    except KeyError:
-        r = (web.DataReader(
-            "^TNX", 'yahoo', today.replace(day=today.day-3), today)['Close'].iloc[-1])/100
-    else:
+    except:
         return 'Risk Free Rate error'
     
     try:
@@ -89,7 +73,6 @@ def calculate_inputs(stock,expiry,strike_price):
         return 't error'
 
 
-# In[129]:
 
 
 def THE_GREEKS():
@@ -108,8 +91,6 @@ def THE_GREEKS():
     print('Vega:  ',put_vega(),'          Theta: ',put_theta())
     print('Rho:   ',put_rho())
 
-
-# In[112]:
 
 
 def d1():
@@ -174,8 +155,6 @@ def bs_put():
     return K*exp(-r*T)-S+bs_call()
 
 
-# In[122]:
-
 
 ###
 ### Adding more information for additional analysis
@@ -223,21 +202,6 @@ def put_rho():
     return 0.01*(-K*T*exp(-r*T)*norm.cdf(-d2()))
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[26]:
-
-
 def sig(stock):
     today = datetime.now()
     one_year_ago = today.replace(year=today.year-1)
@@ -261,8 +225,6 @@ def sig(stock):
     return sigma
 
 
-# In[130]:
-
 
 ### Testing Inputs 
 st = 'TXT'
@@ -270,28 +232,3 @@ ex = '12-18-2022'
 K = 70
 calculate_inputs(st,ex,K)
 THE_GREEKS()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
