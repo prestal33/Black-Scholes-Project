@@ -32,7 +32,7 @@ class calculate_inputs:
         
         self.S = df['Close'].iloc[-1]
             
-        self.T = (datetime.datetime.strptime(str(expiry), "%m/%d/%Y").date() - self.today).days / 365
+        self.T = (datetime.datetime.strptime(str(expiry), '%Y-%m-%d').date() - self.today).days / 365
     
     def d1(self):
         '''
