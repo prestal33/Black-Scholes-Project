@@ -5,12 +5,15 @@
     <input type="text" name="stock"><br>
     Expiration
     <input type="date" name='expiry'><br>
-    Strike Prike
+    Strike Price
     <input type="float" name="strike_price"><br>
-    <button type="Submit" value="Submit">Calculate</button>
+    <button type="submit" value="submit">Calculate</button>
     </form>
-    {% if result %}
-    <p>{print("The price of the call is {}.".format(result))</p>
-    {% endif %}
+    {%if result%}
+    <p>Stock: {{stock}}</p>
+    <p>Expiration: {{expiry}}</p>
+    <p>Strike Price: {{strike_price}}</p>
+    <p>The price of the call is ${{result}}</p>
+    {%endif%}
   </body>
 </html>
