@@ -1,4 +1,4 @@
-# Black Shcoles-Project Read Me
+# Black-Scholes-Project Read Me
 
 ## Description 
 A simple program that can be used to run Black-Sholes Calculations to price options  
